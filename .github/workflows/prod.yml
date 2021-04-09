@@ -32,6 +32,8 @@ jobs:
           node-version: 14.x
 
       - run: npm ci
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
       - run: npm test
 
       - name: Build, Push and Deploy to Heroku
