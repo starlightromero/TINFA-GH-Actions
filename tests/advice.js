@@ -21,13 +21,13 @@ const savingsAdvice = {
   body: 'Invest instead!',
 }
 
-describe('Advice', function () {
+describe('Advice', function() {
   this.timeout(5000)
 
-  after(function (done) {
+  after(function(done) {
     Advice.deleteMany({
-      $or: [{ title: 'Close your savings account' }, { title: 'Test advice' }],
-    }).exec(function (err, advice) {
+      $or: [{ title: 'Close your savings account' }, { title: 'Test Advice' }],
+    }).exec(function(err, advice) {
       if (err) {
         done(err)
       }
@@ -36,11 +36,11 @@ describe('Advice', function () {
   })
 
   // TEST INDEX
-  it('should index ALL advice on / GET', function (done) {
+  it('should index ALL advice on / GET', function(done) {
     chai
       .request(app)
       .get('/')
-      .end(function (err, res) {
+      .end(function(err, res) {
         if (err) {
           done(err)
         }
@@ -51,11 +51,11 @@ describe('Advice', function () {
   })
 
   // TEST NEW
-  it('should display new form on /new GET', function (done) {
+  it('should display new form on /new GET', function(done) {
     chai
       .request(app)
       .get('/new')
-      .end(function (err, res) {
+      .end(function(err, res) {
         if (err) {
           done(err)
         }
@@ -66,12 +66,12 @@ describe('Advice', function () {
   })
 
   // TEST CREATE
-  it('should create a SINGLE advice on / POST', function (done) {
+  it('should create a SINGLE advice on / POST', function(done) {
     chai
       .request(app)
       .post('/')
       .send(testAdvice)
-      .end(function (err, res) {
+      .end(function(err, res) {
         if (err) {
           done(err)
         }
@@ -82,16 +82,16 @@ describe('Advice', function () {
   })
 
   // TEST SHOW
-  it('should show a SINGLE advice on /<id> GET', function (done) {
+  it('should show a SINGLE advice on /<id> GET', function(done) {
     const advice = new Advice(testAdvice)
-    advice.save(function (err, data) {
+    advice.save(function(err, data) {
       if (err) {
         done(err)
       }
       chai
         .request(app)
         .get(`/${data._id}`)
-        .end(function (err, res) {
+        .end(function(err, res) {
           if (err) {
             done(err)
           }
@@ -103,16 +103,16 @@ describe('Advice', function () {
   })
 
   // TEST EDIT
-  it('should edit a SINGLE advice on /<id>/edit GET', function (done) {
+  it('should edit a SINGLE advice on /<id>/edit GET', function(done) {
     const advice = new Advice(testAdvice)
-    advice.save(function (err, data) {
+    advice.save(function(err, data) {
       if (err) {
         done(err)
       }
       chai
         .request(app)
         .get(`/${data._id}/edit`)
-        .end(function (err, res) {
+        .end(function(err, res) {
           if (err) {
             done(err)
           }
@@ -124,9 +124,9 @@ describe('Advice', function () {
   })
 
   // TEST UPDATE
-  it('should update a SINGLE advice on /<id> PUT', function (done) {
+  it('should update a SINGLE advice on /<id> PUT', function(done) {
     const advice = new Advice(testAdvice)
-    advice.save(function (err, data) {
+    advice.save(function(err, data) {
       if (err) {
         done(err)
       }
@@ -134,7 +134,7 @@ describe('Advice', function () {
         .request(app)
         .put(`/${data._id}?_method=PUT`)
         .send(savingsAdvice)
-        .end(function (err, res) {
+        .end(function(err, res) {
           if (err) {
             done(err)
           }
@@ -146,16 +146,16 @@ describe('Advice', function () {
   })
 
   // TEST DELETE
-  it('should delete a SINGLE advice on /<id> DELETE', function (done) {
+  it('should delete a SINGLE advice on /<id> DELETE', function(done) {
     const advice = new Advice(savingsAdvice)
-    advice.save(function (err, data) {
+    advice.save(function(err, data) {
       if (err) {
         done(err)
       }
       chai
         .request(app)
         .delete(`/${data._id}?_method=DELETE`)
-        .end(function (err, res) {
+        .end(function(err, res) {
           if (err) {
             done(err)
           }
