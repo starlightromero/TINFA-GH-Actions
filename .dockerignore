@@ -7,3 +7,4 @@ docker-compose*
 .dockerignore
 node_modules/
 .git/
+.github/
