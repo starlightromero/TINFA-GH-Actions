@@ -10,10 +10,6 @@ RUN npm ci
 
 COPY . .
 
-ARG MONGODB_URI
-
-ENV MONGODB_URI=$MONGODB_URI
-
 EXPOSE 3000
 
 CMD ["npm", "run", "start:prod"]
