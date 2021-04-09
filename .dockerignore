@@ -8,3 +8,4 @@ docker-compose*
 node_modules/
 .git/
 .github/
+.dockerignore
