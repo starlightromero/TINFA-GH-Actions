@@ -26,6 +26,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - run: npm ci
+      - run: npm test
+
       - name: Build, Push and Deploy to Heroku
         id: heroku
         uses: jctaveras/heroku-deploy@v2.1.3
