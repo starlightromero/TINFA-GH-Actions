@@ -12,17 +12,6 @@ jobs:
       matrix:
         node-version: [10.x, 12.x, 14.x, 15.x]
     steps:
-      - name: Notify slack success
-        if: success()
-        id: slack
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
-        uses: voxmedia/github-action-slack-notify-build@v1
-        with:
-          channel_id: ${{ secrets.SLACK_CHANNEL_ID }}
-          status: STARTING
-          color: warning
-
       - name: Checkout
         uses: actions/checkout@v2
 
